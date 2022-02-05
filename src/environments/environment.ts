@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  urlBase_host: 'https://fakerestapi.azurewebsites.net/', //API Fake
+  localBase_host: 'https://localhost:44361/', //API Ingeneo local
 };
 
 /*
