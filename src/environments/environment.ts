@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  urlBase_host: 'https://fakerestapi.azurewebsites.net/', //API Fake
-  localBase_host: 'https://localhost:44361/', //API Ingeneo local
+  localBase_host: 'https://localhost:44310/', //API Aranda Software Catalogo(local)
 };
 
 /*

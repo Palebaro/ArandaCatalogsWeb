@@ -6,15 +6,11 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthorsService {
+export class CategorysService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getForLoadAuthors(): Observable<any> {
-    return this.httpClient.get(environment.urlBase_host +'api/v1/Authors')
-  }
-
-  loadDataAuthors(): Observable<any> {
-    return this.httpClient.get(environment.localBase_host +'api/LoadData/LoadDataAuthors')
+  getCategorys(): Observable<any> {
+    return this.httpClient.get(environment.localBase_host +'api/GetCategorys')
   }
 }

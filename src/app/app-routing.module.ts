@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ConsultBooksComponent } from 'src/modules/consult-books/consult-books.component';
-import { LoginAuthorizationComponent } from 'src/modules/login-authorization/login-authorization.component';
+import { ConsultProductsComponent } from 'src/modules/consult-products/consult-products.component';
 const routes: Routes = [
-  {path: 'Autorizacion', component: LoginAuthorizationComponent},
-  {path: 'Consulta', component: ConsultBooksComponent},
-  {path: '',redirectTo: '/Autorizacion', pathMatch: 'full' }
+  {path: 'Consulta', component: ConsultProductsComponent},
+  {path: '',redirectTo: '/Consulta', pathMatch: 'full' }
 ];
 
 @NgModule({

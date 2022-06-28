@@ -1,0 +1,85 @@
+<div class="contenedor">
+    <mat-card style="background: cornflowerblue;">
+        <mat-card-title>Catalogo de productos</mat-card-title>
+        <mat-card-subtitle>Filtros</mat-card-subtitle>
+        <mat-card-content>
+            <form [formGroup]="form">
+
+                <mat-form-field>
+                    <mat-label>Nombre</mat-label>
+                    <input matInput placeholder="Nombre" formControlName="Name">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Descripción</mat-label>
+                    <input matInput placeholder="Descripción" formControlName="Description">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Catagoria</mat-label>
+                        <mat-select formControlName="CategoryId">
+                          <mat-option *ngFor="let category of categorysList" [value]="category.Id">
+                            {{category.CategoryName}}
+                          </mat-option>
+                        </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Imagen</mat-label>
+                    <input matInput placeholder="Imagen" formControlName="Image">
+                </mat-form-field>
+
+                <button mat-raised-button class="buttonSecundary" color="primary" (click)="getByFilters()">Consultar producto</button>
+                <button mat-raised-button (click)="CreateProductsInDB()">Crear producto</button>
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+<br>
+<div class="center" *ngIf="loadIsService">
+    <mat-progress-spinner diameter=100 
+	                      mode="indeterminate"
+						  color="accent">
+	</mat-progress-spinner> 
+</div>
+<br>
+<div class="contenedor" *ngIf="loadEnd">
+    <mat-card style="background: cornflowerblue;">
+        <mat-card-subtitle>Resultados</mat-card-subtitle>
+        <div class="row">
+            <div class="col-md-12" style="justify-content: center;">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="background-color: cadetblue;"
+                    matSort (matSortChange)="sortData($event)">
+                    <ng-container matColumnDef="Name">
+                        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                        <td mat-cell *matCellDef="let data"> {{data.Name}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Description">
+                        <th mat-header-cell *matHeaderCellDef> Descripción </th>
+                        <td mat-cell *matCellDef="let data"> {{data.Description}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Category">
+                        <th mat-header-cell *matHeaderCellDef> Categoria </th>
+                        <td mat-cell *matCellDef="let data"> {{data.CategoryName}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Image">
+                        <th mat-header-cell *matHeaderCellDef> Imagen </th>
+                        <td mat-cell *matCellDef="let data"> {{data.Image}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Action">
+                        <th mat-header-cell *matHeaderCellDef> Acción </th>
+                        <td mat-cell *matCellDef="let data"> 
+                            <button mat-raised-button (click)="showModalEdit(data)" title="Editar producto">Editar</button>
+                            <button mat-raised-button color="warn" (click)="DeleteProductsInDB(data)" title="Eliminar producto">Eliminar</button>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[10, 20, 40]" showFirstLastButtons aria-label="Seleccione la pagina">
+                </mat-paginator>
+            </div>
+        </div>
+    </mat-card>
+</div>

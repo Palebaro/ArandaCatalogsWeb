@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Interceptor } from './api/htttpInterceptor/interceptor';
-import { LoginAuthorizationComponent } from 'src/modules/login-authorization/login-authorization.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -18,15 +17,16 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatCardModule} from '@angular/material/card';
-import { ConsultBooksComponent } from 'src/modules/consult-books/consult-books.component';
+import { ConsultProductsComponent } from 'src/modules/consult-products/consult-products.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginAuthorizationComponent,
-    ConsultBooksComponent
+    ConsultProductsComponent
   ],
   imports: [
+    MatDialogModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
